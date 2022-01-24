@@ -16,7 +16,7 @@ const JuniorPage = ({ junior }) => {
 };
 
 export const getStaticPaths = async () => {
-  const { data: juniors } = await supabase.from("profile").select("id");
+  const { data: juniors } = await supabase.from("profiles").select("id");
 
   const paths = juniors.map(({ id }) => ({
     params: { id: id.toString() },
@@ -30,7 +30,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { id } }) => {
   const { data: junior } = await supabase
-    .from("profile")
+    .from("profiles")
     .select("*")
     .eq("id", id)
     .single();
