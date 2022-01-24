@@ -1,4 +1,4 @@
-import { supabase } from "./utils/supabase";
+import { supabase } from "../utils/supabase";
 
 const JuniorPage = ({ junior }) => {
   console.log({ junior });

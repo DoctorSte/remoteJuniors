@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { supabase } from "../utils/supabase";
+import { supabase } from "../../utils/supabase";
 import { useRouter } from "next/router";
 
 const Context = createContext();
