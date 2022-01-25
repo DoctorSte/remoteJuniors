@@ -1,33 +1,42 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { supabase } from "../../utils/supabase";
+import { supabase } from "../utils/supabase";
 import { useRouter } from "next/router";
 
 const Context = createContext();
 
 const Provider = ({ children }) => {
-  const [user, setUser] = useState(supabase.auth.user());
   const router = useRouter();
+  const [user, setUser] = useState(supabase.auth.user());
 
   useEffect(() => {
     const getUserProfile = async () => {
       const sessionUser = supabase.auth.user();
+
       if (sessionUser) {
         const { data: profile } = await supabase
-          .from("profiles")
+          .from("profile")
           .select("*")
           .eq("id", sessionUser.id)
           .single();
 
-        setUser({ ...sessionUser, ...profile });
+        setUser({
+          ...sessionUser,
+          ...profile,
+        });
       }
     };
+
     getUserProfile();
 
-    supabase.auth.onAuthStateChange(() => getUserProfile());
+    supabase.auth.onAuthStateChange(() => {
+      getUserProfile();
+    });
   }, []);
 
   const login = async () => {
-    supabase.auth.signIn({ provider: "github" });
+    await supabase.auth.signIn({
+      provider: "github",
+    });
   };
 
   const logout = async () => {
@@ -35,7 +44,13 @@ const Provider = ({ children }) => {
     setUser(null);
     router.push("/");
   };
-  const exposed = { user, login, logout };
+
+  const exposed = {
+    user,
+    login,
+    logout,
+  };
+
   return <Context.Provider value={exposed}>{children}</Context.Provider>;
 };
 

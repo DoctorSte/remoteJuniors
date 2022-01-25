@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import UserProvider from "./context/user";
+import UserProvider from "../context/user";
 import Nav from "../components/nav";
 
 function MyApp({ Component, pageProps }) {

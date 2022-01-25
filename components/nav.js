@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useUser } from "../utils/supabase";
+import { useUser } from "../context/user";
 
 const Nav = () => {
   const { user } = useUser();
