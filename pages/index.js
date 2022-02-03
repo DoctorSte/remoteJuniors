@@ -6,6 +6,8 @@ import { useUser } from "../context/user";
 export default function Home({ juniors }) {
   const { user } = useUser();
 
+  const pic = process.env.NEXT_PUBLIC_BUCKET_URL;
+
   return (
     <div className="">
       <Head>
@@ -15,12 +17,34 @@ export default function Home({ juniors }) {
       </Head>
 
       <main className=" min-h-screen">
-        <div className="flex gap-2 text-blue-500">
+        <div className="grid grid-cols-4 gap-2 text-yellow-50">
           {juniors &&
             juniors.map((junior) => (
-              <Link key={junior.id} href={`${junior.id}`}>
-                <a>
-                  {junior.firstName} {junior.lastName}
+              <Link key={junior.id} href={`/profile/${junior.id}`}>
+                <a className="border border-gray-700 rounded-xl p-3">
+                  <img
+                    src={`${pic}${junior.avatar_url}`}
+                    className="rounded-full w-32"
+                  />
+                  <p>
+                    {junior.firstName} {junior.lastName}
+                  </p>
+                  <p>{junior.username}</p>
+                  <p className="text-sm">{junior.motivation}</p>
+                  <div className="mt-3">
+                    Learning:
+                    <div className="flex gap-2">
+                      {junior.learning &&
+                        junior.learning.map((item) => (
+                          <div
+                            key={item}
+                            className=" capitalize text-sm px-2 py-1 rounded-xl border border-gray-700"
+                          >
+                            {item}
+                          </div>
+                        ))}
+                    </div>
+                  </div>
                 </a>
               </Link>
             ))}
