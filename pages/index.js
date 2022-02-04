@@ -77,7 +77,7 @@ export default function Home({ juniors }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { data: juniors } = await supabase.from("profiles").select("*");
   return {
     props: {
