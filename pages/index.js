@@ -17,7 +17,30 @@ export default function Home({ juniors }) {
       </Head>
 
       <main className=" min-h-screen">
-        <div className="grid grid-cols-4 gap-2 text-yellow-50">
+        <section className=" flex justify-center w-full ">
+          <div className="grid grid-cols-4 gap-4 max-w-7xl my-12 ">
+            <div className="flex flex-col items-center justify-center col-span-3 max-w-2xl ">
+              <h1 className="text-6xl sm:text-8xl font-black mb-6">
+                Looking for experience?
+              </h1>
+              <p className="text-xl">
+                Join the club. There are more resources than ever available
+                online. Yet the best learning happens while you're working on
+                real-life projects, under supervision.
+              </p>
+              <p className="text-blue-500 mt-6">
+                RemoteJuniors helps you find a placement in companies that value
+                learning. Create a profile and expose yourself to hands-on work
+                in the new era of remote.
+              </p>
+            </div>
+            <div className="w-full ">
+              <img src="/banner.png" />
+            </div>
+          </div>
+        </section>
+        {juniors.length} Juniors Available
+        <section className="grid sm:grid-cols-4 gap-2 text-yellow-50">
           {juniors &&
             juniors.map((junior) => (
               <Link key={junior.id} href={`/profile/${junior.id}`}>
@@ -48,7 +71,7 @@ export default function Home({ juniors }) {
                 </a>
               </Link>
             ))}
-        </div>
+        </section>
       </main>
     </div>
   );

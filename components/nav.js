@@ -12,8 +12,12 @@ const Nav = () => {
             Remote juniors
           </h1>
         </Link>
-        <a>Juniors</a>
-        <a>Companies</a>
+        <Link href="/" passHref>
+          Juniors
+        </Link>
+        <Link href="/companies" passHref>
+          Companies
+        </Link>
       </div>
       <Link href={user ? `/profile` : "/login"}>
         <a>
