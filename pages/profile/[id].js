@@ -6,6 +6,8 @@ const JuniorPage = ({ junior }) => {
 
   return (
     <div>
+      {" "}
+      <Nav />
       <Link href="/">Back</Link>
       <div className="border border-gray-700 rounded-xl p-3">
         <img src={`${pic}${junior.avatar_url}`} className="rounded-full w-32" />
