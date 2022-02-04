@@ -84,7 +84,6 @@ export default function Profile() {
 
   return (
     <div className="form-widget">
-      <Nav />
       <div>
         <label htmlFor="username">Username: </label>
         <input
