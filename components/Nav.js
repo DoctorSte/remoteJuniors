@@ -13,10 +13,10 @@ const Nav = () => {
           </h1>
         </Link>
         <Link href="/" passHref>
-          Juniors
+          <p className="hover:opacity-70 cursor-pointer">Juniors</p>
         </Link>
         <Link href="/companies" passHref>
-          Companies
+          <p className="hover:opacity-70 cursor-pointer">Companies</p>
         </Link>
       </div>
       <Link href={user ? `/profile` : "/login"}>

@@ -23,15 +23,17 @@ export default function CompaniesPage({ companies }) {
               <h1 className="text-6xl sm:text-8xl font-black mb-6">
                 Grow the people of tomorrow
               </h1>
-              <p className="text-xl">
-                Find juniors eager to learn. Offer them placement in your
-                company and watch them grow.
-              </p>
-              <p className="text-blue-500 mt-6">
-                Remotecompanies helps you find a placement in companies that
-                value learning. Create a profile and expose yourself to hands-on
-                work in the new era of remote.
-              </p>
+              <div className="max-w-xl">
+                <p className="text-xl">
+                  Find juniors eager to learn. Offer them placement in your
+                  company and watch them grow. Raise your company profile by
+                  helping people break into tech.
+                </p>
+                <p className="text-blue-500 mt-6">
+                  Send an email to companies@remotejuniors.com to create a
+                  company profile.
+                </p>
+              </div>
             </div>
             <div className="w-full ">
               <img src="/banner.png" />

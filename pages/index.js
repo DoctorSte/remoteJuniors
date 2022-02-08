@@ -19,20 +19,25 @@ export default function Home({ juniors }) {
       <main className=" min-h-screen">
         <section className=" flex justify-center w-full ">
           <div className="grid grid-cols-4 gap-4 max-w-7xl my-12 ">
-            <div className="flex flex-col items-center justify-center col-span-3 max-w-2xl ">
+            <div className="flex flex-col items-start justify-center col-span-3 max-w-4xl ">
               <h1 className="text-6xl sm:text-8xl font-black mb-6">
-                Looking for experience?
+                Looking for real-life experience?
               </h1>
-              <p className="text-xl">
-                Join the club. There are more resources than ever available
-                online. Yet the best learning happens while you're working on
-                real-life projects, under supervision.
-              </p>
-              <p className="text-blue-500 mt-6">
-                RemoteJuniors helps you find a placement in companies that value
-                learning. Create a profile and expose yourself to hands-on work
-                in the new era of remote.
-              </p>
+              <div className="max-w-xl">
+                <p className="text-xl">
+                  Join the club! Create your profile and get scouted by
+                  companies looking for juniors all over the world.
+                </p>
+                <p className="text-blue-500 mt-6">
+                  RemoteJuniors helps you find a placement in companies that
+                  value learning.{" "}
+                  <Link href="/login">
+                    <span className="underline hover:text-blue-300 cursor-pointer font-bold">
+                      Sign up now.
+                    </span>
+                  </Link>
+                </p>
+              </div>
             </div>
             <div className="w-full ">
               <img src="/banner.png" />

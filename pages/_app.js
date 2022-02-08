@@ -5,7 +5,7 @@ import Nav from "../components/Nav";
 function MyApp({ Component, pageProps }) {
   return (
     <UserProvider>
-      <div className="bg-gray-900 text-blue-50 p-4 sm:p-24">
+      <div className="bg-gray-900 text-blue-50 p-4 sm:p-24 min-h-screen">
         <Nav />
         <Component {...pageProps} />
       </div>
