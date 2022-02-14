@@ -21,16 +21,16 @@ export default function Home({ juniors }) {
           <div className="grid grid-cols-4 gap-4 max-w-7xl my-12 ">
             <div className="flex flex-col items-start justify-center col-span-3 max-w-4xl ">
               <h1 className="text-6xl sm:text-8xl font-black mb-6">
-                Looking for real-life experience?
+                Looking for hands-on experience?
               </h1>
               <div className="max-w-xl">
                 <p className="text-xl">
-                  Join the club! Create your profile and get scouted by
-                  companies looking for juniors all over the world.
+                  Create your profile and get scouted by companies looking for
+                  juniors all over the world.
                 </p>
                 <p className="text-blue-500 mt-6">
-                  RemoteJuniors helps you find a placement in companies that
-                  value learning.{" "}
+                  RemoteJuniors helps you find a place in companies that value
+                  learning, as a junior or apprentice.{" "}
                   <Link href="/login">
                     <span className="underline hover:text-blue-300 cursor-pointer font-bold">
                       Sign up now.
@@ -44,33 +44,50 @@ export default function Home({ juniors }) {
             </div>
           </div>
         </section>
-        {juniors.length} Juniors Available
+        <div className="flex justify-between">
+          <p className="text-xl font-bold mb-4">
+            {juniors.length} Juniors Seeking A Place to Learn
+          </p>
+          <p className="text-gray-400">Create your profile and get scouted.</p>
+        </div>
         <section className="grid sm:grid-cols-4 gap-2 text-yellow-50">
           {juniors &&
             juniors.map((junior) => (
               <Link key={junior.id} href={`/profile/${junior.id}`}>
-                <a className="border border-gray-700 rounded-xl p-3">
-                  <img
-                    src={`${pic}${junior.avatar_url}`}
-                    className="rounded-full w-32"
-                  />
-                  <p>
-                    {junior.firstName} {junior.lastName}
-                  </p>
-                  <p>{junior.username}</p>
-                  <p className="text-sm">{junior.motivation}</p>
+                <a className="border border-gray-700 hover:bg-gray-800 rounded-xl p-3 transition-all">
+                  <div className="flex gap-2 mb-3">
+                    <img
+                      src={`${pic}${junior.avatar_url}`}
+                      className="rounded-xl w-32 flex-shrink-0"
+                    />
+                    <div>
+                      <p>
+                        {junior.firstName} {junior.lastName}
+                      </p>
+                      <p>{junior.username}</p>{" "}
+                      <p className="text-sm text-gray-400">
+                        Location: {junior.location}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-sm">Motivation: {junior.motivation}</p>
                   <div className="mt-3">
-                    Learning:
-                    <div className="flex gap-2">
+                    <p className="text-sm text-gray-400 mb-1">
+                      Learning right now:
+                    </p>
+                    <div className="flex flex-wrap gap-1">
                       {junior.learning &&
-                        junior.learning.map((item) => (
-                          <div
-                            key={item}
-                            className=" capitalize text-sm px-2 py-1 rounded-xl border border-gray-700"
-                          >
-                            {item}
-                          </div>
-                        ))}
+                        junior.learning
+                          .map((item) => (
+                            <div
+                              key={item}
+                              className=" capitalize text-sm px-2 py-1 rounded-xl border border-gray-700"
+                            >
+                              {item}
+                            </div>
+                          ))
+                          .slice()}
                     </div>
                   </div>
                 </a>

@@ -54,7 +54,7 @@ export default function Avatar({ url, size, onUpload }) {
   }
 
   return (
-    <div>
+    <div className="flex items-center gap-2">
       {avatarUrl ? (
         <img
           src={avatarUrl}
@@ -68,9 +68,12 @@ export default function Avatar({ url, size, onUpload }) {
           style={{ height: size, width: size }}
         />
       )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? "Uploading ..." : "Upload"}
+      <div style={{ width: size }} className="my-2">
+        <label
+          className="px-3 py-2 rounded bg-gray-500 hover:bg-gray-700 transition-all cursor-pointer"
+          htmlFor="single"
+        >
+          {uploading ? "Uploading ..." : "Upload new"}
         </label>
         <input
           style={{
