@@ -1,6 +1,7 @@
 import { supabase } from "../../utils/supabase";
 import Link from "next/dist/client/link";
 import { ArrowLeftIcon, BeakerIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 
 const JuniorPage = ({ junior }) => {
   const pic = process.env.NEXT_PUBLIC_BUCKET_URL;
@@ -80,7 +81,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -95,6 +96,7 @@ export const getStaticProps = async ({ params: { id } }) => {
     props: {
       junior,
     },
+    revalidate: 10,
   };
 };
 export default JuniorPage;
