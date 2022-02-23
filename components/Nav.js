@@ -5,24 +5,29 @@ const Nav = () => {
   const { user } = useUser();
   const pic = process.env.NEXT_PUBLIC_BUCKET_URL;
   return (
-    <nav className="w-full flex justify-between">
-      <div className="flex gap-4">
+    <nav className="w-full flex justify-between items-center mb-4">
+      <div className="flex gap-4 items-center">
         <Link href="/">
-          <h1 className="font-bold cursor-pointer hover:opacity-70">
-            Remote juniors
-          </h1>
+          <img
+            src="/remoteJuniorsLogo.svg"
+            className="w-32 sm:w-44 hover:opacity-70 cursor-pointer transition-all"
+          />
         </Link>
         <Link href="/" passHref>
-          <p className="hover:opacity-70 cursor-pointer">Juniors</p>
+          <p className="hidden sm:block hover:opacity-70 cursor-pointer">
+            Juniors
+          </p>
         </Link>
         <Link href="/companies" passHref>
-          <p className="hover:opacity-70 cursor-pointer">Companies</p>
+          <p className="hidden sm:block  hover:opacity-70 cursor-pointer">
+            Companies
+          </p>
         </Link>
       </div>
       <Link href={user ? `/profile` : "/login"}>
         <a>
           {user ? (
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-3 items-center hover:opacity-70 transition-all">
               {user.firstName} {user.username}
               <img
                 src={`${pic}${user.avatar_url}`}

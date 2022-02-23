@@ -15,7 +15,7 @@ const JuniorPage = ({ junior }) => {
       </Link>
       <div className="flex flex-col sm:w-200 gap-2 p-3 border rounded-lg border-gray-700">
         <div className="">
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center flex-wrap ">
             <img
               src={`${pic}${junior.avatar_url}`}
               className="rounded-xl w-44"

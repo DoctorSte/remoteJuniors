@@ -109,7 +109,7 @@ export default function Profile() {
             id="username"
             type="text"
             value={username || ""}
-            className="bg-gray-800 border border-gray-400 p-2 rounded-lg"
+            className="bg-gray-800 border border-gray-700 p-2 rounded-lg"
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
@@ -120,7 +120,7 @@ export default function Profile() {
               id="firstName"
               type="firstName"
               value={firstName || ""}
-              className="bg-gray-800 border border-gray-400 p-2 rounded-lg"
+              className="bg-gray-800 border border-gray-700 p-2 rounded-lg"
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
@@ -130,7 +130,7 @@ export default function Profile() {
               id="lastName"
               type="lastName"
               value={lastName || ""}
-              className="bg-gray-800 border border-gray-400 p-2 rounded-lg"
+              className="bg-gray-800 border border-gray-700 p-2 rounded-lg"
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
@@ -142,7 +142,7 @@ export default function Profile() {
               id="website"
               type="website"
               value={website || ""}
-              className="bg-gray-800 border border-gray-400 p-2 rounded-lg"
+              className="bg-gray-800 border border-gray-700 p-2 rounded-lg"
               onChange={(e) => setWebsite(e.target.value)}
             />
           </div>
@@ -152,32 +152,34 @@ export default function Profile() {
               id="location"
               type="location"
               value={location || ""}
-              className="bg-gray-800 border border-gray-400 p-2 rounded-lg"
+              className="bg-gray-800 border border-gray-700 p-2 rounded-lg"
               onChange={(e) => setLocation(e.target.value)}
             />
           </div>
         </div>
         <div className="">
-          <label htmlFor="motivation">Motivation: </label>
+          <label htmlFor="motivation" className="">
+            Why are you learning to code? Provide your motivation:{" "}
+          </label>
           <br />
           <textarea
             id="motivation"
             type="motivation"
             rows="3"
             value={motivation || ""}
-            className="bg-gray-800 border border-gray-400 p-2 rounded-lg w-full"
+            className="bg-gray-800 border border-gray-700 p-2 rounded-lg w-full mt-2"
             onChange={(e) => setMotivation(e.target.value)}
           />
         </div>
-        <p>Learning: </p>
+        <p>What are you learning right now? </p>
         <div className="flex gap-2">
           {learning &&
             learning.map((item, index) => (
-              <div key={index}>
+              <div key={index} className="p-2 bg-gray-800 rounded-full">
                 {item}{" "}
                 <button
                   onClick={() => removeSkill(index)}
-                  className="text-red-500 text-xs"
+                  className="text-red-500 text-xs hover:text-red-200"
                 >
                   Delete
                 </button>
@@ -189,7 +191,7 @@ export default function Profile() {
             id=""
             type=""
             value={newLearning || ""}
-            className="bg-gray-800 border border-gray-400 p-2 rounded-lg"
+            className="bg-gray-800 border border-gray-700 p-2 rounded-lg"
             onChange={(e) => setNewLearning(e.target.value)}
           />
           <button

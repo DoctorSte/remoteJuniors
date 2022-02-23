@@ -16,21 +16,17 @@ export default function Home({ juniors }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className=" min-h-screen">
+      <main className=" min-h-screen overflow-hidden">
         <section className=" flex justify-center w-full ">
-          <div className="grid grid-cols-4 gap-4 max-w-7xl my-12 ">
-            <div className="flex flex-col items-start justify-center col-span-3 max-w-4xl ">
-              <h1 className="text-6xl sm:text-8xl font-black mb-6">
-                Looking for hands-on experience?
-              </h1>
+          <div className="grid sm:grid-cols-4 gap-4 max-w-7xl my-12">
+            <div className="flex flex-col items-start justify-center sm:col-span-3 max-w-4xl ">
+              <div className="text-4xl sm:text-8xl font-black mb-0 sm:mb-6">
+                Get scouted for apprenticeships
+              </div>
               <div className="max-w-xl">
-                <p className="text-xl">
-                  Create your profile and get scouted by companies looking for
-                  juniors all over the world.
-                </p>
-                <p className="text-blue-500 mt-6">
+                <p className="text-blue-500 mt-6 sm:text-2xl">
                   RemoteJuniors helps you find a place in companies that value
-                  learning, as a junior or apprentice.{" "}
+                  learning to code, as a junior or apprentice.{" "}
                   <Link href="/login">
                     <span className="underline hover:text-blue-300 cursor-pointer font-bold">
                       Sign up now.
@@ -39,18 +35,28 @@ export default function Home({ juniors }) {
                 </p>
               </div>
             </div>
-            <div className="w-full ">
-              <img src="/banner.png" />
+            <div className="">
+              <img src="/banner.png" className="w-60 sm:w-full" />
+              <p className="text-sm text-right text-gray-700 w-full">
+                Illustration by{" "}
+                <a
+                  href="https://www.figma.com/community/file/890095002328610853"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  Alzea
+                </a>
+              </p>
             </div>
           </div>
         </section>
         <div className="flex justify-between">
           <p className="text-xl font-bold mb-4">
-            {juniors.length} Juniors Seeking A Place to Learn
+            {juniors.length} Juniors Looking for an Apprenticeship
           </p>
           <p className="text-gray-400">Create your profile and get scouted.</p>
         </div>
-        <section className="grid sm:grid-cols-4 gap-2 text-yellow-50">
+        <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-2 text-yellow-50">
           {juniors &&
             juniors.map((junior) => (
               <Link key={junior.id} href={`/profile/${junior.id}`}>
