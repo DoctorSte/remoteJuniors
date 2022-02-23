@@ -18,7 +18,7 @@ const JuniorPage = ({ junior }) => {
           <div className="flex gap-3 items-center flex-wrap ">
             <img
               src={`${pic}${junior.avatar_url}`}
-              className="rounded-xl w-44"
+              className="rounded-xl w-44 h-44 object-cover"
             />
             <div>
               <p className="font-bold text-xl">
@@ -46,19 +46,20 @@ const JuniorPage = ({ junior }) => {
           <div className="mt-3">
             Learning:
             <div className="flex gap-2">
-              {junior.learning &&
-                junior.learning.map((item) => (
-                  <div
-                    key={item}
-                    className=" capitalize text-sm px-2 py-1 rounded-xl border border-gray-700"
-                  >
-                    {item}
-                  </div>
-                ))}
+              {junior.learning
+                ? junior.learning.map((item) => (
+                    <div
+                      key={item}
+                      className=" capitalize text-sm px-2 py-1 rounded-xl border border-gray-700"
+                    >
+                      {item}
+                    </div>
+                  ))
+                : "Not provided"}
             </div>
           </div>
-          <div className="flex justify-between mt-2 items-center">
-            Want {junior.firstName} to work for you as a junior?
+          <div className="flex flex-wrap justify-between mt-2 items-center">
+            Want to work with {junior.firstName || junior.username}?
             <a
               href={`mailto:${junior.email}`}
               className="px-2 py-1 rounded bg-blue-500 hover:bg-blue-700 transition-all mt-2"

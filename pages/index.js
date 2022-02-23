@@ -54,7 +54,7 @@ export default function Home({ juniors }) {
           <p className="text-xl font-bold mb-4">
             {juniors.length} Juniors Looking for an Apprenticeship
           </p>
-          <p className="text-gray-400">Create your profile and get scouted.</p>
+          <p className="text-gray-400">Click for more details.</p>
         </div>
         <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-2 text-yellow-50">
           {juniors &&
@@ -64,7 +64,7 @@ export default function Home({ juniors }) {
                   <div className="flex gap-2 mb-3">
                     <img
                       src={`${pic}${junior.avatar_url}`}
-                      className="rounded-xl w-32 flex-shrink-0"
+                      className="rounded-xl w-32 h-32 flex-shrink-0 object-cover"
                     />
                     <div>
                       <p>
@@ -83,17 +83,18 @@ export default function Home({ juniors }) {
                       Learning right now:
                     </p>
                     <div className="flex flex-wrap gap-1">
-                      {junior.learning &&
-                        junior.learning
-                          .map((item) => (
-                            <div
-                              key={item}
-                              className=" capitalize text-sm px-2 py-1 rounded-xl border border-gray-700"
-                            >
-                              {item}
-                            </div>
-                          ))
-                          .slice()}
+                      {junior.learning
+                        ? junior.learning
+                            .map((item) => (
+                              <div
+                                key={item}
+                                className=" capitalize text-sm px-2 py-1 rounded-xl border border-gray-700"
+                              >
+                                {item}
+                              </div>
+                            ))
+                            .slice()
+                        : "Not provided"}
                     </div>
                   </div>
                 </a>
