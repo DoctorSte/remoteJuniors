@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabase";
 import { useUser } from "../../context/user";
+import toast from "react-hot-toast";
 import Avatar from "../../components/Avatar";
 import { useRouter } from "next/router";
 
@@ -53,7 +54,16 @@ export default function Profile() {
     }
   }
 
-  async function updateProfile({ username, website, avatar_url }) {
+  async function updateProfile({
+    username,
+    firstName,
+    lastName,
+    location,
+    website,
+    avatar_url,
+    motivation,
+    learning,
+  }) {
     try {
       setLoading(true);
       const user = supabase.auth.user();
@@ -82,6 +92,7 @@ export default function Profile() {
       alert(error.message);
     } finally {
       setLoading(false);
+      toast.success("Successfully updated!");
     }
   }
 
@@ -89,12 +100,18 @@ export default function Profile() {
     setLearning((arr) => {
       return arr.filter((_value, i) => i !== indexToRemove);
     });
+    toast("Removed skill");
   };
 
   return (
     <main className="w-full grid justify-center">
       <div className="flex flex-col sm:w-200 gap-2 p-3 border rounded-lg border-gray-700">
-        <h1 className="text-xl font-bold">Your Profile</h1>
+        <div className="flex justify-between">
+          <h1 className="text-xl font-bold">Your Profile</h1>
+          <p className="text-gray-600">
+            Edit fields and click Update Profile to save.
+          </p>
+        </div>
         <Avatar
           url={avatar_url}
           size={150}
@@ -198,8 +215,16 @@ export default function Profile() {
             className="px-2 py-1 rounded bg-blue-500 hover:bg-blue-700 transition-all"
             onClick={
               learning
-                ? () => setLearning((arr) => [...arr, newLearning])
-                : () => setLearning([newLearning])
+                ? () => {
+                    setLearning((arr) => [...arr, newLearning]);
+                    setNewLearning("");
+                    toast.success("Learning added!");
+                  }
+                : () => {
+                    setLearning([newLearning]);
+                    setNewLearning("");
+                    toast.success("Learning added!");
+                  }
             }
           >
             Add Learning
@@ -211,10 +236,13 @@ export default function Profile() {
             onClick={() =>
               updateProfile({
                 username,
+                firstName,
+                lastName,
+                location,
                 website,
                 avatar_url,
-                learning,
                 motivation,
+                learning,
               })
             }
             disabled={loading}
