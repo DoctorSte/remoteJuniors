@@ -21,7 +21,7 @@ export default function Home({ juniors }) {
           <div className="grid sm:grid-cols-4 gap-4 max-w-7xl my-12">
             <div className="flex flex-col items-start justify-center sm:col-span-3 max-w-4xl ">
               <div className="text-4xl sm:text-8xl font-black mb-0 sm:mb-6">
-                Get scouted for apprenticeships
+                Looking for hands-on experience?
               </div>
               <div className="max-w-xl">
                 <p className="text-blue-500 mt-6 sm:text-2xl">
